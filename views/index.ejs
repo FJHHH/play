@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <link rel='stylesheet' href='/stylesheets/index.css' />
+	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+  <header>
+  	<h1><%= title %></h1>
+  	<div id="lrcwarp">
+    	<p class="lrc"></p>
+    </div>
+  </header>
+    <div class="left">
+    	<ul class="mode_list">
+  			<li mode="0">Col</li>
+  			<li mode="1">Ball</li>
+  		</ul>
+  		<!--
+  		<div class="addfilebox">
+  			<label for="addfiles">Add</label>
+  			<input type="file" id="addfiles" multiple>
+  		</div>
+  		-->
+    	<ul id="music_list">
+    		<% music.forEach(function(item){ %>
+					<li title="<%= item %>"><%= item.substring(0,item.length-4) %></li>
+    		<% }) %>
+    	</ul>
+    </div>
+    <div class="bottom">
+   		<div class="playboxwrap">
+   			<div id="infobtn">
+   				<i class="fa fa-info" aria-hidden="true"></i>
+   			</div>
+    		<div class="box ctrlbox">
+  				<div class="pre" title="上一首"></div>
+  			</div>
+  			<div class="box playbox">
+  				<div class="play" title="暂停/播放"></div>
+  			</div>
+  			<div class="box ctrlbox">
+  				<div class="next" title="下一首"></div>
+  			</div>
+  			<div id="volumelab" >
+  				<input type="range" id="volume" min="0" max="100" value="60"/>
+  				<label for="volume"><i class="fa fa-volume-down fa-x" aria-hidden="true"></i></label> 
+  			</div>
+  		</div>
+  	</div>
+    <div id="box"></div>
+    <div id="infobox">
+    	<div class="closebtn"><i class="fa fa-close" aria-hidden="true"></i></div>
+      <div class="content">
+    	<div class="descrip infoitem">
+    		<p>很闲，看了点视频，照着别人的样子写着玩，也加了些自己想的东西，缓存啊预加载啊什么的。还有一些效果和功能没有写,代码很乱没有整理。。。以后想起来再搞把。。</p>
+    	</div>
+    	<div class="infoitem links">
+    		<p><strong>相关链接</strong></p>
+    		<ul>
+    			<li><a target="_blank" href="http://www.imooc.com/learn/299">HTML5音乐可视化——慕课网</a></li>
+    			<li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a></li>
+    			<li><a target="_blank" href="http://www.qiniu.com/">七牛云存储</a></li>
+    			<li><a target="_blank" href="http://fontawesome.dashgame.com/">Font Awesome图标字体库和css框架</a></li>
+    			<li><a target="_blank" href="http://www.cnblogs.com/Wayou/p/sync_lyric_with_html5_audio.html">论HTML5 Audio 标签歌词同步的实现</a></li>
+    		</ul>
+    	</div>
+      </div>
+    </div>
+    <script type="text/javascript" src="/javascripts/jquery-3.1.1.js"></script>
+     <script type="text/javascript" src="/javascripts/jquery-mousewheel-master/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="/javascripts/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,399 @@
+body {
+	background: #000;
+	color: #fff;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+	-webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    cursor: default;
+    font-family: "Microsoft YaHei";
+}
+
+ul {
+	padding: 0;
+}
+
+a {
+  	color: #00B7FF;
+	list-style-type: none;
+}
+
+ul li {
+	list-style-type: none;
+}
+
+.selected {
+	color:red;
+}
+
+
+.floatleft {
+	float: left;
+}
+
+#music_list li,#volumelab,.mode_list li {
+	cursor: pointer;
+	-webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    list-style-type: none;
+    display: inline-block;
+}
+
+#music_list li {
+	line-height: 1.5em;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 100%;
+}
+
+.mode_list li {
+	width: 100px;
+	text-align: center;
+}
+
+.right {
+	width: 100%;
+	height: 100%;
+}
+
+#box {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+header {
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	height: 100px;
+	width: 300px;
+	z-index: 1;
+}
+
+.left {
+	position: fixed;
+	top: 120px;
+	left: -272px;
+	width: 250px;
+	z-index: 1;
+	transition: 0.5s;
+	border: 1px solid #fff;
+	padding: 10px;
+	border-radius: 2px;
+	background: rgba(0,0,0,0.2);
+}
+
+.left:hover {
+	left: 4px;
+}
+
+.left::before {
+	content:'';
+	position: absolute;
+	border-top: 5px solid rgba(0,0,0,0);
+	border-bottom: 5px solid rgba(0,0,0,0);
+	border-left: 10px solid #fff;
+	top:calc(50% - 5px);
+	right: -16px;
+	z-index: 1;
+}
+
+.left::after {
+	content: '';
+    position: absolute;
+    height: 100px;
+    width: 20px;
+    top: calc(50% - 50px);
+    right: -21px;
+    border-right: 1px solid #fff;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background: inherit;
+    z-index: 1;
+}
+
+.right {
+	position: fixed;
+	width: 0;
+	height: 0;
+}
+
+input[type=file] {
+	opacity: 0;
+	width: 0;
+	height: 0;
+	font-size: 0px;
+}
+
+input[type=range] {
+	-webkit-appearance: none;
+	height: 8px;
+	background: #999;
+	border-radius: 10px;
+	outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 12px;
+    width: 12px;
+    border-radius: 100%;
+    background: #fff;
+}
+
+input[type=range]::-moz-range-track {
+	height: 8px;
+	background: #999;
+	border-radius: 10px;
+	border: none;
+}
+
+input[type=range]::-moz-range-thumb {
+	height: 12px;
+	width: 12px;
+	background: #fff;
+	border-radius: 100%;
+}
+
+a {
+	cursor: pointer;
+	text-decoration:none;
+}
+
+a:hover {
+	color: red;
+}
+
+.addfilebox label {
+	cursor: pointer;
+}
+
+.clear {
+	overflow: auto;
+  	zoom: 1;
+}
+
+.bottom {
+	width: 300px;
+	height: 60px;
+	position: fixed;
+	left: calc(50% - 151px);
+	bottom: -40px;
+	background: rgba(0,0,0,0.2);
+	z-index: 1;
+	border: 1px solid #fff;
+	transition: .5s;
+	border-radius:120px 120px 0 0/90px 90px 0 0;
+	font-size: 20px;
+}
+
+.bottom:hover {
+	bottom: 0;
+}
+
+.playboxwrap {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.playboxwrap>.box {
+	position: absolute;
+}
+
+
+.playbox {
+	display: inline-block;
+	top: calc(50% - 0.5em);
+	left: calc(50% - 0.5em);
+}
+
+.playbox>* {
+	cursor: pointer;
+	display: inline-block;
+}
+
+.playbox .play {
+	border-left: 1em solid #fff;
+	border-top: 0.5em solid rgba(0,0,0,0);
+	border-bottom: 0.5em solid rgba(0,0,0,0);
+}
+
+.playbox .pause {
+	position: relative;
+	width: 1em;
+	height: 1em;
+}
+
+.playbox .pause:before {
+	content: '';
+	width: 0.2em;
+	height: 1em;
+	background: #fff;
+	position: absolute;
+	top: 0;
+	left: 0.2em;
+}
+
+.playbox .pause:after {
+	content: '';
+	width: 0.2em;
+	height: 1em;
+	background: #fff;
+	position: absolute;
+	top: 0;
+	left: 0.6em;
+}
+
+.ctrlbox {
+	display: inline-block;
+	top: calc(50% - 0.5em);
+	left: calc(50% - 0.5em);
+	
+}
+
+.next, .pre, #volumelab * {
+	cursor: pointer!important;
+}
+
+.ctrlbox .next {
+	position: relative;
+	margin-left: 1.5em;
+}
+
+.ctrlbox .next:before {
+	content: '';
+	border-left: 1em solid #fff;
+	border-top: 0.5em solid rgba(0,0,0,0);
+	border-bottom: 0.5em solid rgba(0,0,0,0);
+	position: absolute;
+	top: 0;
+	left: 1em;
+}
+
+.ctrlbox .next:after {
+	content: '';
+	border-left: 1em solid #fff;
+	border-top: 0.5em solid rgba(0,0,0,0);
+	border-bottom: 0.5em solid rgba(0,0,0,0);
+	position: absolute;
+	top: 0;
+	left: 2em;
+}
+
+.ctrlbox .pre {
+	position: relative;
+	margin-left: -5em;
+}
+
+.ctrlbox .pre:before {
+	content: '';
+	border-right: 1em solid #fff;
+	border-top: 0.5em solid rgba(0,0,0,0);
+	border-bottom: 0.5em solid rgba(0,0,0,0);
+	position: absolute;
+	top: 0;
+	left: 1em;
+}
+
+.ctrlbox .pre:after {
+	content: '';
+	border-right: 1em solid #fff;
+	border-top: 0.5em solid rgba(0,0,0,0);
+	border-bottom: 0.5em solid rgba(0,0,0,0);
+	position: absolute;
+	top: 0;
+	left: 2em;
+}
+
+#volumelab {
+	position: absolute;
+    display: inline-block;
+    bottom: calc(50% - 0.8em);
+    right: calc(50% - 6em);
+    width: 1em;
+}
+
+#volumelab:hover input[type=range] {
+	display: block;
+    margin-left: -45px;
+    margin-bottom: 50px;
+}
+
+#volumelab input[type=range] {
+    transform: rotate(-90deg);
+    width: 100px;
+    display: none;
+}
+
+#volumelab label{
+	display: block;
+}
+
+#lrcwarp {
+	-webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
+#infobtn {
+	position: absolute;
+	bottom: calc(50% - 0.8em - 1px);
+    left: calc(50% - 6em - 2px);
+    padding: 1px 6px;
+    cursor: pointer;
+}
+
+#infobtn * {
+	cursor: pointer;
+}
+
+#infobox {
+	border: 1px solid rgba(255,255,255,0.8);
+	width: 50%;
+	height: 50%;
+	position: fixed;
+	top:calc(25%);
+	left: calc(25%);
+	background: rgba(255,255,255,0.2);
+	border-radius: 5px;
+	display: none;
+	z-index: 1;
+}
+
+#infobox .closebtn {
+	float: right;
+	margin: 5px;
+	cursor: pointer;
+}
+
+#infobox .closebtn *{
+	cursor: pointer;
+}
+
+#infobox .infoitem {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 5px 5px 5px 10px;
+}
+
+.content {
+	width: 100%;
+	
+}
