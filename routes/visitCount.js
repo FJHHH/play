@@ -9,4 +9,8 @@ router.get('/', function(req, res, next) {
 	res.render('visit/index', { title: 'visit'});
 });
 
+router.get('/addVisitRecord', function(req, res, next) {
+    res.render('visit/index', { title: 'addVisitRecord'});
+});
+
 module.exports = router;
