@@ -1,0 +1,8 @@
+.btn-link:focus {
+    outline: none;
+    text-decoration: none;
+}
+.btn-link:hover {
+    outline: none;
+    text-decoration: none;
+}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Daily Task</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/task/index.css">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><%= title %></a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="alert alert-info alert-dismissible" role="alert"
+             <% if (req.session.user) { %>
+                style="display: none"<% } %>
+        >
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+            <strong>你好</strong>， 请先
+            <button class="btn-link" data-toggle="modal" data-target="#modal-login">登录</button>
+            或
+            <button class="btn-link" data-toggle="modal" data-target="#modal-register">注册</button>
+            <div id="modal-register" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span
+                                        aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title ">注册</h4>
+                        </div>
+                        <form id="registerForm" role="form" action="register" method="post">
+                            <input type="hidden" hidden="hidden" value="/task" name="url">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <input name="email" type="email" class="form-control" id="exampleInputEmail1"
+                                           placeholder="Enter email">
+                                </div>
+                                <div class="form-group">
+                                    <input name="password" type="password" class="form-control"
+                                           id="exampleInputPassword1"
+                                           placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <input name="passwordConfirmation" type="password" class="form-control"
+                                           id="exampleInputPasswordConfirmation"
+                                           placeholder="Password Confirmation">
+                                </div>
+                                <div class="form-group">
+                                    <input name="userName" type="text" class="form-control"
+                                           id="InputUsername"
+                                           placeholder="Username">
+                                </div>
+                                <div class="form-group">
+                                    <input name="realName" type="text" class="form-control"
+                                           id="InputRealname"
+                                           placeholder="Realname">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button type="submit" class="btn btn-primary">注册</button>
+                            </div>
+                        </form>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <div id="modal-login" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span
+                                        aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title">登录</h4>
+                        </div>
+                        <form id="loginForm" role="form" action="login" method="post">
+                            <input type="hidden" hidden="hidden" value="/task" name="url">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <input name="email" type="email" class="form-control" id="loginInputEmail1"
+                                           placeholder="Enter email">
+                                </div>
+                                <div class="form-group">
+                                    <input name="password" type="password" class="form-control"
+                                           id="loginInputPassword1"
+                                           placeholder="Password">
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remeberMe"> Check me out
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button type="submit" class="btn btn-primary">登录</button>
+                            </div>
+                        </form>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+        </div>
+    </div>
+</header>
+
+<footer></footer>
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+<script>
+$(function () {
+    $('#registerForm').validate({
+        rules: {
+            userName: {
+                required: true,
+                minlength: 3,
+                maxlength: 10,
+                remote: "checkUserName"
+            },
+            realName: {
+                required: true,
+                minlength: 3,
+                maxlength: 10
+            },
+            password: {
+                required: true,
+                minlength: 5,
+                maxlength: 20
+            },
+            passwordConfirmation: {
+                required: true,
+                equalTo : "#exampleInputPassword1",
+                minlength: 5,
+                maxlength: 20
+            },
+            email: {
+                required: true,
+                email: true,
+                remote: "checkEmail"
+            }
+        },
+        messages: {
+            email: {
+                remote: "已经被注册过"
+            },
+            userName: {
+                remote: "已经存在"
+            }
+        },
+        errorPlacement:function(error,element) {
+            console.log("errorPlacement");
+            error.appendTo(element.parent());
+            element.parent().addClass("has-error").removeClass("has-success");
+        },
+        success: function(label,element) {
+            $(element).parent().removeClass("has-error").addClass("has-success");
+            $(label).remove();
+        },
+        errorClass: "control-label"
+    });
+    $('#loginForm').validate({
+        rules: {
+            password: {
+                required: true,
+                minlength: 5,
+                maxlength: 20
+            },
+            email: {
+                required: true,
+                email: true
+            }
+        },
+        errorPlacement:function(error,element) {
+            console.log("errorPlacement");
+            error.appendTo(element.parent());
+            element.parent().addClass("has-error").removeClass("has-success");
+        },
+        success: function(label,element) {
+            $(element).parent().removeClass("has-error").addClass("has-success");
+            $(label).remove();
+        },
+        errorClass: "control-label"
+    });
+});
+</script>
+</body>
+</html>

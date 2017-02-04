@@ -94,10 +94,12 @@ header {
 	padding: 10px;
 	border-radius: 2px;
 	background: rgba(0,0,0,0.2);
+	opacity: .5;
 }
 
 .left:hover {
 	left: 4px;
+	opacity: 1;
 }
 
 .left::before {
@@ -200,10 +202,12 @@ a:hover {
 	transition: .5s;
 	border-radius:120px 120px 0 0/90px 90px 0 0;
 	font-size: 20px;
+	opacity: .5;
 }
 
 .bottom:hover {
 	bottom: 0;
+	opacity: 1;
 }
 
 .playboxwrap {
@@ -395,5 +399,19 @@ a:hover {
 
 .content {
 	width: 100%;
+    height: calc(100% - 29px);
+    overflow-y: auto;
+    overflow-x: hidden; 
+}
+.content::-webkit-scrollbar {
+	width: 4px;
+	margin-right: 1px;
+}	
+.content::-webkit-scrollbar-track-piece {
 	
+}
+.content::-webkit-scrollbar-thumb {
+	background: #fff;
+	width: 4px;
+	border-radius: 2px;
 }

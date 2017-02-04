@@ -3,35 +3,40 @@
 <head>
 	<meta charset="UTF-8">
 	<title><%= title %></title>
-	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
-	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+	<link rel="stylesheet" type="text/css" href="javascripts/fullpage/jquery.fullPage.css" />
 </head>
 <body>
-	<div class="ctrlwarp">
-		<ul class="ctrlbox">
-			<li><a href="#page1"></a></li>
-			<li><a href="#page2"></a></li>
-			<li><a href="#page3"></a></li>
-			<li><a href="#page4"></a></li>
-		</ul>
-	</div>
-	<div class="pagewarp">
-		
-		<div class="page" id="page2" title="music">
-			<iframe src="http://182.254.137.20:3000/music" frameborder="0" height="100%" width="100%"></iframe>
-		</div>
-		<div class="page" id="page3"></div>
-		<div class="page" id="page4"></div>
-		<div class="page" id="page1">
-			<!-- <div class="inputtest">
-				<input type="text" id="nocursor">
-				<input type="text" id="realinput">
-			</div> -->
+	<ul id="menu">
+		<li data-menuanchor="home"><a href="#home">Home</a></li>
+		<li data-menuanchor="music"><a href="#music">Music</a></li>
+		<li data-menuanchor="mailbox"><a href="#mailbox">Mailbox</a></li>
+		<li data-menuanchor="dailyTask"><a href="#dailyTask">Daily Task</a></li>
+		<li data-menuanchor="zp"><a href="#zp">一些小作品</a></li>
+	</ul>
+	<div id="fullpage">
+		<div class="section">
 			<div class="warp hello">
 				<h1>Hi,暂时没有太多内容，点击左边的按钮试试</h1>
 			</div>
 		</div>
+		<div class="section" title="music">
+			<iframe src="music" frameborder="0" height="100%" width="100%"></iframe>
+		</div>
+		<div class="section"></div>
+		<div class="section"></div>
+		<div class="section">
+			<div class="slide"> Slide 1 </div>
+    		<div class="slide"> Slide 2 </div>
+    		<div class="slide"> Slide 3 </div>
+    		<div class="slide"> Slide 4 </div>
+		</div>
+		
 	</div>
+	
+	<script type="text/javascript" src="javascripts/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="javascripts/fullpage/jquery.fullPage.js"></script>
 	<script type="text/javascript" src="javascripts/main.js"></script>
 </body>
 </html>
