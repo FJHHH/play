@@ -3,7 +3,7 @@
  */
 var PageBean = function(currentPage, PageSize) {
     this.currentPage = currentPage;
-    this.PageSize = PageSize;
+    this.pageSize = PageSize;
 };
 
 PageBean.prototype = {

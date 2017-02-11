@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>留言板</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <link href="/stylesheets/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.css">
+    <style>
+        .oneword .time {
+            font-size: 12px;
+            color: #99a2aa;
+        }
+
+        .oneword .name {
+            font-size: 12px;
+            color: #3d3d3d;
+            text-decoration: none;
+        }
+
+        .oneword .word {
+            color: #333;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .oneword {
+            border-bottom: 1px solid rgb(229, 233, 239);
+            width: 90%;
+            margin: 0 auto;
+            padding-top: 10px;
+        }
+
+        .page > .oneword:first-child {
+            border-top: 1px solid rgb(229, 233, 239);
+        }
+        #nomore {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">留言板</div>
+        <div id="content" class="panel-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <form id="add" method="post" action="/leaveword/add">
+                        <div class="form-group">
+                            <input name="email" type="email" class="form-control" id="email" placeholder="你的邮箱，方便我联系你">
+                        </div>
+                        <div class="form-group">
+                            <input name="nickname" type="text" class="form-control" id="nickname"
+                                   placeholder="怎么称呼你？">
+                        </div>
+                        <div class="form-group">
+                                <textarea name="word" type="text" class="form-control" id="word"
+                                          placeholder="你想说什么？"></textarea>
+                        </div>
+                        <div class="form-group btn-group" role="group">
+                            <button id="submitbtn" type="button" class="btn btn-primary">提交</button>
+                            <button type="reset" class="btn btn-default">重置</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                </div>
+            </div>
+            <div class="row" id="msgbox">
+                <div class="col-md-12">
+                </div>
+            </div>
+            <div id="nomore" class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">没有更多了。。。</div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/javascripts/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="/javascripts/jquery-mousewheel-master/jquery.mousewheel.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.js"></script>
+<script>
+    var replaceHtmlTag = function (str) {
+        if (!str) return str;
+        str = str.replace(/<+/g, '&lt;');
+        str = str.replace(/>+/g, '&rt;');
+        str = str.replace(/\s+/g, '&nbsp;');
+        return str;
+    };
+    var $content = $('#content');
+    var getNextPage = function () {
+        var $ct = $content;
+        var pageSize = 10;
+        var nextPage = 1;
+        var xhr = null;
+        var hasNext = true;
+        var $temp = $('<div id="temp" class="row">' +
+            '<div class="col-md-4"></div>' +
+            '<div class="col-md-4">加载中。。。</div>' +
+            '<div class="col-md-4"></div>' +
+            '</div>');
+        return function () {
+            if (xhr && xhr.readyState != 4 || !hasNext) {
+                return;
+            }
+            $ct.append($temp);
+            xhr = $.ajax({
+                url: '/leaveword/page',
+                method: 'GET',
+                dataType: 'html',
+                data: {currentPage: nextPage, pageSize: pageSize},
+                success: function (data) {
+                    var $ct = $content;
+                    $temp.remove();
+                    $ct.append(data);
+                    var $last = $ct.find('.page:last');
+                    if ($last.find('.oneword').length === 0) {
+                        $last.remove();
+                        hasNext = false;
+                        $('#nomore').show().remove().appendTo($ct);
+                    }
+                    nextPage++;
+                }
+            });
+        }
+    }();
+
+    $(function () {
+        getNextPage();
+    });
+
+
+    $('#submitbtn').click(function () {
+        var $this = $(this);
+        $this.addClass('disabled').html('提交中..');
+        $.ajax({
+            url: '/leaveword/add',
+            method: 'POST',
+            data: $('#add').serialize(),
+            dataType: 'json',
+            success: function (data) {
+                var str = '';
+                var leaveword = null;
+                if (data.result) {
+                    str = '<div class="alert alert-success alert-dismissible" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><spanaria-hidden="true">&times;</span></button> ' +
+                        data.msg +
+                        '</div>';
+                    $('#msgbox').prepend(str);
+                    leaveword = data.leaveWord;
+                    $('.page:eq(0)').prepend('<div class="row oneword">' +
+                        '<div class="col-md-12">' +
+                        '<div class="row">' +
+                        '<div class="col-md-2 name">' + replaceHtmlTag(leaveword.nickName) + '</div>' +
+                        '<div class="col-md-10"></div>' +
+                        '</div>' +
+                        '<div class="row">' +
+                        '<div class="col-md-12 word">' + replaceHtmlTag(leaveword.word) + '</div>' +
+                        '</div>' +
+                        '<div class="row">' +
+                        '<div class="col-md-2 time">' + data.createdTime + '</div>' +
+                        '<div class="col-md-10"></div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>');
+                    $('#add')[0].reset();
+                } else {
+                    str = '<div class="alert alert-danger alert-dismissible" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><spanaria-hidden="true">&times;</span></button> ' +
+                        data.msg +
+                        '</div>';
+                    $('#msgbox').prepend(str);
+                }
+                $this.removeClass('disabled').html('提交');
+            }
+        });
+    });
+
+    $(document).scroll(function () {
+        var $document = $(document);
+        if ($document.scrollTop() + $(window).height() >= $document.height() - 50) {
+            getNextPage();
+        }
+    });
+</script>
+</body>
+</html>
