@@ -1,87 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>留言板</title>
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
-    <link href="/stylesheets/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
         .oneword .time {
-            font-size: 12px;
+            position: absolute;
+            right: 0;
             color: #99a2aa;
+            width: 160px
         }
 
-        .oneword .name {
-            font-size: 12px;
-            color: #3d3d3d;
-            text-decoration: none;
+        .oneword .info {
+            position: relative;
         }
 
-        .oneword .word {
-            color: #333;
-            font-size: 14px;
-            margin: 5px 0;
+        textarea {
+            resize: none;
         }
 
-        .oneword {
-            border-bottom: 1px solid rgb(229, 233, 239);
-            width: 90%;
-            margin: 0 auto;
-            padding-top: 10px;
-        }
-
-        .page > .oneword:first-child {
-            border-top: 1px solid rgb(229, 233, 239);
-        }
-        #nomore {
-            display: none;
+        @media (max-width: 330px) {
+            small {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="panel panel-default">
-        <div class="panel-heading">留言板</div>
-        <div id="content" class="panel-body">
-            <div class="row">
-                <div class="col-md-8">
-                    <form id="add" method="post" action="/leaveword/add">
-                        <div class="form-group">
-                            <input name="email" type="email" class="form-control" id="email" placeholder="你的邮箱，方便我联系你">
-                        </div>
-                        <div class="form-group">
-                            <input name="nickname" type="text" class="form-control" id="nickname"
-                                   placeholder="怎么称呼你？">
-                        </div>
-                        <div class="form-group">
-                                <textarea name="word" type="text" class="form-control" id="word"
-                                          placeholder="你想说什么？"></textarea>
-                        </div>
-                        <div class="form-group btn-group" role="group">
-                            <button id="submitbtn" type="button" class="btn btn-primary">提交</button>
-                            <button type="reset" class="btn btn-default">重置</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-md-4">
-                </div>
-            </div>
-            <div class="row" id="msgbox">
-                <div class="col-md-12">
-                </div>
-            </div>
-            <div id="nomore" class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">没有更多了。。。</div>
-                <div class="col-md-4"></div>
+    <div class="page-header">
+        <h1>留言板
+            <small> Message Board</small>
+        </h1>
+    </div>
+    <form id="add">
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon input-info">@</span>
+                <input name="email" type="text" class="form-control" placeholder="我的伊妹儿…">
+                <span class="input-group-addon input-info"><i class="fa fa-user"></i></span>
+                <input name="nickname" type="text" class="form-control" placeholder="我是…">
             </div>
         </div>
-    </div>
+        <div class="form-group">
+            <div class="input-group">
+                <textarea name="word" type="text" class="form-control" id="word" placeholder="我想轻轻的在你耳边呢喃…"></textarea>
+                <span id="submitbtn" class="btn btn-default input-group-addon input-info"><i
+                            class="fa fa-send"></i></span>
+            </div>
+        </div>
+    </form>
+    <div id="msgbox"></div>
+    <div id="content"></div>
 </div>
-
-<script type="text/javascript" src="/javascripts/jquery-3.1.1.js"></script>
-<script type="text/javascript" src="/javascripts/jquery-mousewheel-master/jquery.mousewheel.min.js"></script>
-<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 <script>
     var replaceHtmlTag = function (str) {
         if (!str) return str;
@@ -132,10 +112,9 @@
         getNextPage();
     });
 
-
     $('#submitbtn').click(function () {
         var $this = $(this);
-        $this.addClass('disabled').html('提交中..');
+        $this.addClass('disabled');
         $.ajax({
             url: '/leaveword/add',
             method: 'POST',
@@ -150,19 +129,13 @@
                         '</div>';
                     $('#msgbox').prepend(str);
                     leaveword = data.leaveWord;
-                    $('.page:eq(0)').prepend('<div class="row oneword">' +
-                        '<div class="col-md-12">' +
-                        '<div class="row">' +
-                        '<div class="col-md-2 name">' + replaceHtmlTag(leaveword.nickName) + '</div>' +
-                        '<div class="col-md-10"></div>' +
+                    $('.page:eq(0)').prepend('<div class="panel panel-default oneword">' +
+                        '<div class="panel-heading info">' +
+                        '<span>' + replaceHtmlTag(leaveword.nickName) + '</span>' +
+                        '<span class="time">' + data.createdTime + '</span>' +
                         '</div>' +
-                        '<div class="row">' +
-                        '<div class="col-md-12 word">' + replaceHtmlTag(leaveword.word) + '</div>' +
-                        '</div>' +
-                        '<div class="row">' +
-                        '<div class="col-md-2 time">' + data.createdTime + '</div>' +
-                        '<div class="col-md-10"></div>' +
-                        '</div>' +
+                        '<div class="panel-body word">' +
+                        replaceHtmlTag(leaveword.word) +
                         '</div>' +
                         '</div>');
                     $('#add')[0].reset();
@@ -172,7 +145,7 @@
                         '</div>';
                     $('#msgbox').prepend(str);
                 }
-                $this.removeClass('disabled').html('提交');
+                $this.removeClass('disabled');
             }
         });
     });
@@ -186,3 +159,5 @@
 </script>
 </body>
 </html>
+
+

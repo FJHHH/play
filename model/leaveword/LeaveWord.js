@@ -40,7 +40,8 @@ var LeaveWord = sequelize.define('LeaveWord', {
         defaultValue: 0
     }
 }, {
-    tableName: 'LeaveWord'
+    tableName: 'LeaveWord',
+    charset: 'utf8mb4'
 });
 
 LeaveWord.sync();

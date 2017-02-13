@@ -7,23 +7,13 @@ var moment = require('moment');
 var service = require('../service/LeaveWordService');
 var PageBean = require('../util/PageBean');
 var format = 'YYYY-MM-DD HH:mm:ss';
-var replaceHtmlTag = function (str) {
-    if (!str) return str;
-    str = str.replace(/<+/g, '&lt;');
-    str = str.replace(/>+/g, '&lt;');
-    str = str.replace(/\s+/g, '&nbsp;');
-    return str;
-};
 
 router.post('/add', function (req, res, next) {
-    var ip = req.headers['x-forwarded-for'] || req.headers['x-iisnode-remote_addr'] ||
+    var ip = req.headers['x-iisnode-remote_addr'] || req.headers['x-forwarded-for'] ||
         req.connection.remoteAddress ||
         req.socket.remoteAddress ||
         req.connection.socket.remoteAddress;
     var email = req.param('email');
-    // var word = replaceHtmlTag(req.param('word'));
-    //var nickname = replaceHtmlTag(req.param('nickname'));
-
     var word = req.param('word');
     var nickname = req.param('nickname');
 

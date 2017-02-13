@@ -1,18 +1,13 @@
 <div class="page">
     <% pageBean.array.forEach(function(item){ %>
-    <div class="row oneword">
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-2 name"><%= item.nickName %>：</div>
-                <div class="col-md-10"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 word"><%= item.word %></div>
-            </div>
-            <div class="row">
-                <div class="col-md-2 time"><%= item.createdTime %></div>
-                <div class="col-md-10"></div>
-            </div>
+    <div class="panel panel-default oneword">
+        <div class="panel-heading info">
+            <span><%=item.nickName%></span>
+            <span class="time"><%=item.createdTime%></span>
+        </div>
+
+        <div class="panel-body word">
+            <%=item.word%>
         </div>
     </div>
     <% }) %>
