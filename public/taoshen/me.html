@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>消息中心</title>
+  <!-- 新 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <style type="text/css">
+  </style>
+</head>
+  <body>
+    <nav id='navb' class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+            <div class="person-info" id="navbar-person-info">
+              <a href="mine.html">
+                <img src="img/icon01.png">
+                <div class='username'>FJH</div>
+              </a>
+              <div class="person-menu" style="display:none;">
+        <ul>
+          <li><a href="mine.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><span>个人主页</span></a></li>
+          <li><a href="message.html"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><span>消息中心</span></a></li>
+          <li><a href="me.html"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><span>帐号设置</span></a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-off" aria-hidden="true"></span><span>退出</span></a></li>
+        </ul>
+      </div>
+            </div>
+      
+
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li></li>
+            <li><a href="#">动态</a></li>
+            <li><a href="#">历史</a></li>
+            <li id="tougao"><a href="#">投稿</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    <div id="tabs">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs left-nav" role="tablist">
+        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">帐号密码</a></li>
+        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">我的信息</a></li>
+        <li role="presentation"><a href="#facecfg" aria-controls="facecfg" role="tab" data-toggle="tab">封面图设置</a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>邮箱</td>
+                <td></td>
+                <td><a href="#">绑定邮箱</a></td>
+              </tr>
+              <tr>
+                <td>手机</td>
+                <td>11111111111</td>
+                <td><a href="#">更换手机</a></td>
+              </tr>
+              <tr>
+                <td>密码</td>
+                <td>*****</td>
+                <td><a href="#">修改密码</a></td>
+              </tr>
+              <tr>
+                <td>微博</td>
+                <td></td>
+                <td><a href="#">绑定微博</a></td>
+              </tr>
+              <tr>
+                <td>QQ</td>
+                <td>。</td>
+                <td><a href="#">取消绑定</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="profile">
+        <form>
+          <ul class="me">
+            <li class="face">
+              <label>头像</label>
+              <img src="img/icon01.png"/>
+
+              <div class="faceupload">
+                <span class="btntitle">选择头像</span>
+                <input class="uploadinput" data-minrequire="1" type="file" accept="image/jpeg,image/png" name="upfile">
+              </div>
+              
+            </li>
+            <div class="clearfix">
+              </div>
+            <li>
+              <label>昵称</label>
+              <input type="text"/>
+            </li>
+            <li>
+              <label>个人简介</label>
+              <textarea id="desme"></textarea>
+            </li>
+            <li>
+              <button class="btn btn-primary submit">保存</button>
+            </li>
+          </ul>
+        </form>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="facecfg"></div>
+      </div>
+    </div>
+     <div class="clearfix"></div>
+    <div class="to-mine"><a href="mine.html">&lt;&lt;&nbsp;返回个人主页</a></div>
+    </div>
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+  <script src="jquery/jquery.min.js"></script>
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#navbar-person-info').hover(function(){
+        $('.person-menu').show();
+      },function(){
+        $('.person-menu').hide();
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>播放页面</title>
+  <!-- 新 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" href="css/play.css">
+  <link href="video.js/dist/video-js.css" rel="stylesheet" type="text/css">
+  <style type="text/css">
+  </style>
+</head>
+  <body>
+
+       <nav id='navb' class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand navbar-menu" href="index.html">ASMR</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse floatright">
+          <ul class="nav navbar-nav">
+            <li><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+            <div class="person-info" id="navbar-person-info">
+              <a href="mine.html">
+                <img src="img/icon01.png">
+                <div class='username'>FJH</div>
+              </a>
+              <div class="person-menu" style="display:none;">
+        <ul>
+          <li class="navbar-menu"><a href="mine.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><span>个人主页</span></a></li>
+          <li class="navbar-menu"><a href="message.html"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><span>消息中心</span></a></li>
+          <li class="navbar-menu"><a href="me.html"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><span>帐号设置</span></a></li>
+          <li class="navbar-menu"><a href="#"><span class="glyphicon glyphicon-off" aria-hidden="true"></span><span>退出</span></a></li>
+        </ul>
+      </div>
+            </div></li>
+            <li class="navbar-menu"><a href="#">动态</a></li>
+            <li class="navbar-menu"><a href="#">历史</a></li>
+            <li class="navbar-menu"><a href="#">收藏夹</a></li>
+            <li id="tougao"><a href="#">投稿</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="header">
+      <div class="header-layer"></div>
+      <div class="container">
+        <div class="center"></div>
+        <div class="menus">
+          <ul class="header-menu row">
+            <li class="m-item col-md-2"><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>首页</a></li>
+            <div class="m-item col-md-2"><a href="index.html">无人声</a>
+              <div class="menus2">
+                <ul class="header-menu2">
+                  <li class="m-item2"><a href="index.html">二级菜单</a>
+                    <div class="menus3">
+                      <ul class="header-menu3">
+                        <li class="m-item3"><a href="index.html">三级菜单</a></li>
+                        <li class="m-item3"><a href="index.html">三级菜单</a></li>
+                        <li class="m-item3"><a href="index.html">三级菜单</a></li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="m-item2"><a href="index.html">二级菜单</a></li>
+                  <li class="m-item2"><a href="index.html">二级菜单</a></li>
+                  <li class="m-item2"><a href="index.html">二级菜单</a></li>
+                </ul>
+              </div>
+            </div>
+            <li class="m-item col-md-2"><a href="index.html">男声</a></li>
+            <li class="m-item col-md-2"><a href="index.html">女声</a></li>
+            <li class="m-item col-md-2"><a href="index.html">中文</a></li>
+            <li class="m-item col-md-2"><a href="index.html">其他语种</a></li>
+          </ul>
+        </div>
+        <div class="search">
+          <form action="#">
+            <input type="text" class="search-input" placeholder="涛神就是叼">
+            <button class="btn-search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="page-body container">
+      <div class="video-box row">
+        <div class="video-info col-md-6">
+          <div class="video-title">
+            <h1>涛神就是叼！涛神之歌~~~~</h1>
+          </div>
+          <ol class="breadcrumb">
+            <li><a href="index.html">主页</a></li>
+            <li><a href="#">男声</a></li>
+            <li><a href="#">涛神</a></li>
+            <li class="active">涛神就是叼</li>
+          </ol>
+          <time datetime="2016-08-22 21:25"><i>2016-08-22 21:25</i></time>
+          <a href="javascript:;" class="tousu">投诉</a>
+          <div class="title-info row">
+            <div class="title-line col-md-4"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span><span id="dianji" class="num">1234</span></div>
+            <div class="title-line col-md-4"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span><span id="pinglun" class="num">222</span></div>
+            <div class="title-line col-md-4"><span class="glyphicon glyphicon-star" aria-hidden="true"></span><span id="shoucang" class="num">22</span></div>
+          </div>
+        </div>
+        <div class="p-info cv-info col-md-3">
+          <div>
+            <img src="img/icon01.png" alt="" class="face">
+            <a href="mine.html" class="name upname">FJH</a>
+          </div>
+          <div>涛神就是叼</div>
+          <button>关注</button>
+        </div>
+        <div class="p-info up-info col-md-3">
+          <div>
+            <img src="img/icon01.png" alt="" class="face">
+            <a href="mine.html" class="name cvname">FJH</a>
+            <div>涛神就是叼</div>
+            <button>关注</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="player-warper">
+      <div class="player container">
+        <video id="example_video1" class="video-js vjs-default-skin" controls preload="none" width="980" height="600"
+        poster="http://video-js.zencoder.com/oceans-clip.png"
+        data-setup="{}">
+            <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+            <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
+            <source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg">
+        </video>
+      </div>
+      <div class="toolbar container">
+        <div class="block share initialized">
+          <span class="t">
+            <i class="icon-t icon-anim-share" title="分享"></i>
+            <div class="t-right">
+              <span class="t-right-top">分享</span>
+              <span class="t-right-middle">1234</span>
+            </div>
+          </span>
+          <div class="share-box copyinit">
+            <div class="box-left">
+              <div class="share-btns">
+                <div class="icon icon-share share-btn weibo"></div>
+                <div class="icon icon-share share-btn qzone"></div>
+                <div class="icon icon-share share-btn qq"></div>
+                <div class="icon icon-share share-btn tieba"></div>
+              </div>
+              <div class="share-head">将视频贴到博客或论坛</div>
+              <ul class="share-address-list">
+                <li class="share-address">
+                  <label>视频地址</label>
+                  <input type="text" id="link-address" class="link"  readonly value="http://www.bilibili.com/video/av6145024/">
+                  <span class="address-copy" hasmessagebox>复制</span>
+                </li>
+                <li class="share-address">
+                  <label>Flash地址</label>
+                  <input type="text" id="link-flash" class="link"  readonly value="http://static.hdslb.com/miniloader.swf?aid=6145024&page=1">
+                  <span class="address-copy" hasmessagebox>复制</span>
+                </li>
+                <li class="share-address share-address-last">
+                  <label>Html地址</label>
+                  <input type="text" id="link-html" class="link" readonly value="">
+                  <span class="address-copy" hasmessagebox>复制</span>
+                </li>
+              </ul>
+
+            </div>
+            <div class="box-right">
+              <div class="share-head">扫二维码</div>
+            </div>
+          </div>
+
+        </div>
+        <div class="block fav">
+          <span class="t">
+            <i class="icon-t icon-anim-fav" title="收藏"></i>
+            <div class="t-right">
+              <span class="t-right-top">收藏</span>
+              <span class="t-right-middle">1234</span>
+            </div>
+          </span>
+        </div>
+        <div class="block app initialized">
+          <span class="t">
+            <i class="icon-t icon-anim-app" title="手机看"></i>
+            <div class="t-right">
+              <span class="t-right-top">用手机看</span>
+              <span class="t-right-middle">用手机看</span>
+            </div>
+            
+          </span>
+          <div class="app-box copyinit"></div>
+        </div>
+        <div class="block">
+          <span class="t">
+            <i class="icon-t icon-anim-coin" title="投币"></i>
+            <div class="t-right">
+              <span class="t-right-top">硬币</span>
+              <span class="t-right-middle">1234</span>
+            </div>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="v-info row">
+            <div class="v-tags">
+
+            </div>
+            <div class="v-desc">涛神就是叼！</div>
+        </div>
+      <div class="comment-warper row">
+          <div class="comment-info">
+              <span class="comment-num">240 评论</span>
+          </div>
+
+          <div class="asmr-comment">
+                <div class="c-order">
+                    <a order="0" class="order active">按时间</a>
+                    <a order="1" class="order">按赞同数</a>
+                    <a order="2" class="order">按回复数</a>
+                    <div class="pagelist small floatright">
+                      <a class="result">共<span class="maxpagenum">12</span>页</a>
+                        <a href="javascript:;" class="prepage" style="display:none">上一页</a>
+                      <a class="p active">1</a>
+                      <a class="p" href="javascript:;">2</a>
+                      <a class="p" href="javascript:;">3</a>
+                      <a class="p" href="javascript:;">4</a>
+                      <a class="p" href="javascript:;">5</a>
+                      <a href="javascript:;" class="nextpage">下一页</a>
+                    </div>
+                </div>
+                <div class="comment-send">
+                  <div class="send-content">
+                    <div class="user-face">
+                      <img src="img/icon01.png" alt="">
+                    </div>
+                    <div class="textarea-container">
+                      <textarea cols="80" name="msg" rows="5" id="comment_text" placeholder="请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。" class="comment-input"></textarea>
+                    </div>
+                    <button type="submit" class="comment-submit btn btn-primary">提交评论</button>
+                  </div>
+                </div>
+                <div class="comments">
+                    <div class="mainfoolr">
+                        <div class="facebox">
+                          <a href="mine.html">
+                            <img src="img/icon01.png" alt="">
+                          </a>
+                        </div>
+                        <div class="t">
+                          <a href="mine.html">FJH</a>
+                        </div>
+                        <div class="content">涛神就是叼！</div>
+                      <div class="comment-info">
+                        <div class="foolrnum">#240</div>
+                        <div class="foolrdate">2017-09-07 14:33</div>
+                        <i class="report">
+                          <a class="zan">
+                            <span>赞</span>
+                            <b>
+                              (<em>1</em>)
+                            </b>
+                          </a>
+                          <a href="javascript:;" class="huifu">回复</a>
+                          <a class="jubao">举报</a>
+                        </i>
+                      </div>
+                        <div class="replies">
+                            <div class="reply">
+                              <div class="facebox">
+                                <a href="mine.html">
+                                  <img src="img/icon01.png" alt="">
+                                </a>
+                              </div>
+                              <div class="t">
+                                <a href="mine.html">FJH</a>
+                              </div>
+                              <div class="content">涛神就是叼！</div>
+                              <div class="comment-info">
+                                <div class="foolrdate">2017-09-07 14:33</div>
+                                <i class="report">
+                                  <a class="zan">
+                                    <span>赞</span>
+                                    <b>
+                                      (<em>1</em>)
+                                    </b>
+                                  </a>
+                                  <a href="javascript:;" class="huifu">回复</a>
+                                  <a class="jubao">举报</a>
+                                </i>
+                              </div>
+                            </div>
+                       </div>
+                   </div>
+                  <div class="mainfoolr">
+                    <div class="facebox">
+                      <a href="mine.html">
+                        <img src="img/icon01.png" alt="">
+                      </a>
+                    </div>
+                    <div class="t">
+                      <a href="mine.html">FJH</a>
+                    </div>
+                    <div class="content">涛神就是叼！</div>
+                    <div class="comment-info">
+                      <div class="foolrnum">#240</div>
+                      <div class="foolrdate">2017-09-07 14:33</div>
+                      <i class="report">
+                        <a class="zan">
+                          <span>赞</span>
+                          <b>
+                            (<em>1</em>)
+                          </b>
+                        </a>
+                        <a href="javascript:;" class="huifu">回复</a>
+                        <a class="jubao">举报</a>
+                      </i>
+                    </div>
+                    <div class="replies">
+                      <div class="reply">
+                        <div class="facebox">
+                          <a href="mine.html">
+                            <img src="img/icon01.png" alt="">
+                          </a>
+                        </div>
+                        <div class="t">
+                          <a href="mine.html">FJH</a>
+                        </div>
+                        <div class="content">涛神就是叼！</div>
+                        <div class="comment-info">
+                          <div class="foolrdate">2017-09-07 14:33</div>
+                          <i class="report">
+                            <a class="zan">
+                              <span>赞</span>
+                              <b>
+                                (<em>1</em>)
+                              </b>
+                            </a>
+                            <a href="javascript:;" class="huifu">回复</a>
+                            <a class="jubao">举报</a>
+                          </i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mainfoolr">
+                    <div class="facebox">
+                      <a href="mine.html">
+                        <img src="img/icon01.png" alt="">
+                      </a>
+                    </div>
+                    <div class="t">
+                      <a href="mine.html">FJH</a>
+                    </div>
+                    <div class="content">涛神就是叼！</div>
+                    <div class="comment-info">
+                      <div class="foolrnum">#240</div>
+                      <div class="foolrdate">2017-09-07 14:33</div>
+                      <i class="report">
+                        <a class="zan">
+                          <span>赞</span>
+                          <b>
+                            (<em>1</em>)
+                          </b>
+                        </a>
+                        <a href="javascript:;" class="huifu">回复</a>
+                        <a class="jubao">举报</a>
+                      </i>
+                    </div>
+                    <div class="replies">
+                      <div class="reply">
+                        <div class="facebox">
+                          <a href="mine.html">
+                            <img src="img/icon01.png" alt="">
+                          </a>
+                        </div>
+                        <div class="t">
+                          <a href="mine.html">FJH</a>
+                        </div>
+                        <div class="content">涛神就是叼！</div>
+                        <div class="comment-info">
+                          <div class="foolrdate">2017-09-07 14:33</div>
+                          <i class="report">
+                            <a class="zan">
+                              <span>赞</span>
+                              <b>
+                                (<em>1</em>)
+                              </b>
+                            </a>
+                            <a href="javascript:;" class="huifu">回复</a>
+                            <a class="jubao">举报</a>
+                          </i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mainfoolr">
+                    <div class="facebox">
+                      <a href="mine.html">
+                        <img src="img/icon01.png" alt="">
+                      </a>
+                    </div>
+                    <div class="t">
+                      <a href="mine.html">FJH</a>
+                    </div>
+                    <div class="content">涛神就是叼！</div>
+                    <div class="comment-info">
+                      <div class="foolrnum">#240</div>
+                      <div class="foolrdate">2017-09-07 14:33</div>
+                      <i class="report">
+                        <a class="zan">
+                          <span>赞</span>
+                          <b>
+                            (<em>1</em>)
+                          </b>
+                        </a>
+                        <a href="javascript:;" class="huifu">回复</a>
+                        <a class="jubao">举报</a>
+                      </i>
+                    </div>
+                    <div class="replies">
+                      <div class="reply">
+                        <div class="facebox">
+                          <a href="mine.html">
+                            <img src="img/icon01.png" alt="">
+                          </a>
+                        </div>
+                        <div class="t">
+                          <a href="mine.html">FJH</a>
+                        </div>
+                        <div class="content">涛神就是叼！</div>
+                        <div class="comment-info">
+                          <div class="foolrdate">2017-09-07 14:33</div>
+                          <i class="report">
+                            <a class="zan">
+                              <span>赞</span>
+                              <b>
+                                (<em>1</em>)
+                              </b>
+                            </a>
+                            <a href="javascript:;" class="huifu">回复</a>
+                            <a class="jubao">举报</a>
+                          </i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mainfoolr">
+                    <div class="facebox">
+                      <a href="mine.html">
+                        <img src="img/icon01.png" alt="">
+                      </a>
+                    </div>
+                    <div class="t">
+                      <a href="mine.html">FJH</a>
+                    </div>
+                    <div class="content">涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！涛神就是叼！</div>
+                    <div class="comment-info">
+                      <div class="foolrnum">#240</div>
+                      <div class="foolrdate">2017-09-07 14:33</div>
+                      <i class="report">
+                        <a class="zan">
+                          <span>赞</span>
+                          <b>
+                            (<em>1</em>)
+                          </b>
+                        </a>
+                        <a href="javascript:;" class="huifu">回复</a>
+                        <a class="jubao">举报</a>
+                      </i>
+                    </div>
+                    <div class="replies">
+                      <div class="reply">
+                        <div class="facebox">
+                          <a href="mine.html">
+                            <img src="img/icon01.png" alt="">
+                          </a>
+                        </div>
+                        <div class="t">
+                          <a href="mine.html">FJH</a>
+                        </div>
+                        <div class="content">涛神就是叼！</div>
+                        <div class="comment-info">
+                          <div class="foolrdate">2017-09-07 14:33</div>
+                          <i class="report">
+                            <a class="zan">
+                              <span>赞</span>
+                              <b>
+                                (<em>1</em>)
+                              </b>
+                            </a>
+                            <a href="javascript:;" class="huifu">回复</a>
+                            <a class="jubao">举报</a>
+                          </i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="pagelist big">
+                    <a class="result">共12页</a>
+                    <a href="javascript:;" class="prepage">上一页</a>
+                    <a class="p active">1</a>
+                    <a class="p" href="javascript:;">2</a>
+                    <a class="p" href="javascript:;">3</a>
+                    <a class="p" href="javascript:;">4</a>
+                    <a class="p" href="javascript:;">5</a>
+                    <strong>...</strong>
+                    <a class="p" href="javascript:;">12</a>
+                    <a href="javascript:;" class="nextpage">下一页</a>
+                    <div class="floatright jumper-warp">
+                        <span>共<span class="maxpagenum">12</span>页 跳至</span>
+                        <input type="text">
+                        <span>页</span>
+                    </div>
+                </div>
+          </div>
+
+      </div>
+    </div>
+
+    <footer>
+      
+    </footer>
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+  <script src="jquery/jquery-3.1.0.js"></script>
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="video.js/dist/video.js"></script>
+  <script src="js/player.js"></script>
+  <script type="text/javascript">
+    videojs.options.flash.swf = "video-js.swf";
+
+    $(document).ready(function() {
+      $('#navbar-person-info').hover(function(){
+        $('.person-menu').show();
+      },function(){
+        $('.person-menu').hide();
+      });
+      $('.m-item').hover(function() {
+        $(this).children('.menus2').show();
+      },function(){
+        $(this).children('.menus2').hide();
+      });
+      $('.m-item2').hover(function() {
+        $(this).children('.menus3').show();
+      },function(){
+        $(this).children('.menus3').hide();
+      });
+    });
+  </script>
+</body>
+</html>

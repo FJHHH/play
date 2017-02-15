@@ -1,0 +1,243 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    width: 80%;
+    max-width: 980px;
+    min-width: 600px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+a[href^="http"]:empty::before {
+    content: attr(href);
+}
+
+h1, h2, h3, h4{
+    font-weight: normal;
+}
+
+
+
+/* header */
+header {
+    background: rgba(255, 255, 255, .5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 1px 0 0 rgba(214, 214, 214, 1);
+    z-index: 100;
+}
+
+header h1 {
+    float: left;
+    height: 70px;
+    line-height: 70px;
+}
+
+header .nav-links {
+    float: right;
+    position: relative;
+}
+
+header .nav-links .link {
+    display: inline-block;
+    width: 100px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+
+header .nav-links .link.active {
+    background: rgba(214, 214, 214, 0.2);
+}
+
+header .nav-links .nav-slide {
+    cursor: pointer;
+    position: absolute;
+    width: 100px;
+    height: 70px;
+    top: 0;
+    left: 0;
+    box-shadow: inset 0 -13px 10px -15px;
+    z-index: 1;
+}
+
+/* 内容部分 */
+section {
+    padding-top: 70px;
+}
+section {
+    height: 600px;
+}
+
+section .container {
+    display: table;
+    height: 100%;
+}
+
+section .container .warp {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* aboutme部分 */
+#aboutme {
+    position: relative;
+}
+
+#aboutme .slides {
+    position: relative;
+    height: 600px;
+    z-index: 98;
+}
+
+#aboutme .slides .slide {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 99;
+    display: table;
+}
+
+#aboutme .slides .slide .warp {
+    padding: 10px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding-bottom: 80px;
+}
+
+#aboutme .slides .slide .warp h2:not(:first-child) {
+    margin-top: 20px;
+}
+
+#aboutme .btns .btn {
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    margin: -25px;
+    border-radius: 25px;
+    box-shadow: 0 0 2px 2px rgb(214, 214, 214);
+    z-index: 99;
+    cursor: pointer;
+}
+
+#aboutme .btns .btn .fa {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 50px;
+    color: rgb(214, 214, 214);
+}
+
+#aboutme .btns .pre {
+    left: 7%;
+}
+
+#aboutme .btns .next {
+    right: 7%;
+}
+
+#aboutme .slides .slide h2 {
+    font-size: 30px;
+}
+
+#aboutme .slides .slide .warp ul {
+    margin-top: 15px;
+}
+
+#aboutme .slides .slide .warp ul li {
+    margin-top: 5px;
+    color: #666;
+}
+
+#aboutme .slides .slide .warp ul li *:not(:first-child) {
+    margin-left: 10px;
+}
+
+#aboutme .points {
+    width: 88px;
+    height: 16px;
+    margin: -8px -40px;
+    position: absolute;
+    left: 50%;
+    bottom: 7%;
+    z-index: 99;
+}
+
+#aboutme .points .point {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #A4DAEC;
+    opacity: .5;
+    float: left;
+    cursor: pointer;
+}
+
+#aboutme .points .point:not(:first-child) {
+    margin-left: 20px;
+}
+
+#aboutme .points .point.active {
+    background-color: #55C1E5;
+    opacity: 1;
+}
+
+/* 技能部分 */
+#ability h2, #ability h3 {
+    text-align: center;
+}
+
+#ability .ability-list>li{
+    height: 30px;
+    border-left: 2px solid #356;
+    margin-top: 10px;
+}
+
+#ability .ability-list>li>h4{
+    padding-left: 5px;
+    height: 30px;
+    line-height: 30px;
+    width: 10em;
+}
+
+#ability .ability-list>li>h4:nth-child(0) {
+    background: #1AA094;
+}
+
+#ability .ability-list>li>h4:nth-child(1) {
+    background: #1AA094;
+}
+
+#ability .ability-list>li>h4:nth-child(2) {
+    background: #1AA094;
+}
+
+#ability .ability-list>li>h4:nth-child(3) {
+    background: #1AA094;
+}
+
+#ability .ability-list>li>ul{
+    display: none;
+}
