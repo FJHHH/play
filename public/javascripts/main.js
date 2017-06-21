@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    $('#loading').fadeOut('400', function() {
+        $("#loadingcss").remove();
+        $('#loading').remove();
+    });
     $('#fullpage').fullpage({
         sectionsColor: ['red', 'green', 'orange', '#1fa67a', '#ccddff'],
         anchors: ['home', 'music', 'mailbox', 'dailyTask', 'zp'],
