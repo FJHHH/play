@@ -5,15 +5,55 @@ html, body {
 .section {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5) inset; }
 
-hello {
+.hello {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  height: 100%; }
-  hello h1 {
-    color: #fff;
-    font-size: 80px;
-    margin-top: 0; }
+  height: 100%;
+  background-image: linear-gradient(top, transparent, black), url("../img/banner.png");
+  background-image: -webkit-linear-gradient(top, transparent, black), url("../img/banner.png");
+  background-image: -o-linear-gradient(top, transparent, black), url("../img/banner.png");
+  background-image: -moz-linear-gradient(top, transparent, black), url("../img/banner.png");
+  background-repeat: no-repeat;
+  color: #FFF;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .hello > * {
+    padding: 10px; }
+  .hello .links {
+    height: 30px;
+    overflow: hidden;
+    display: flex; }
+    .hello .links a {
+      color: #FFF;
+      text-decoration-line: none;
+      font-size: 18px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      width: 125px;
+      transition: .3s; }
+      .hello .links a:hover {
+        color: #FFF;
+        font-size: 25px; }
+      .hello .links a:first-child {
+        margin-right: 10px; }
+  .hello p {
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: .2em; }
 
-#menu {
+#menu * {
+  text-decoration-line: none;
+  color: #FFF; }
+#menu.home-menu {
+  display: flex;
+  list-style: none; }
+  #menu.home-menu > * {
+    padding: 10px; }
+#menu.mini-menu {
   padding: 0;
   margin: 0;
   position: fixed;
@@ -26,20 +66,32 @@ hello {
   overflow: hidden;
   background: rgba(255, 255, 255, 0.6);
   border-bottom-right-radius: 20px; }
-  #menu:hover {
+  #menu.mini-menu:hover {
     top: 0;
     left: 0;
     height: 60px;
     width: 100%;
     border-radius: 0;
     background: rgba(255, 255, 255, 0.3); }
-    #menu:hover li {
+    #menu.mini-menu:hover li {
       opacity: 1; }
-  #menu.orange {
+    @media (max-width: 610px) {
+      #menu.mini-menu:hover {
+        height: 120px; } }
+    @media (max-width: 331px) {
+      #menu.mini-menu:hover {
+        height: 180px; } }
+    @media (max-width: 256px) {
+      #menu.mini-menu:hover {
+        height: 240px; } }
+    @media (max-width: 209px) {
+      #menu.mini-menu:hover {
+        height: 320px; } }
+  #menu.mini-menu.orange {
     background: rgba(255, 165, 0, 0.6); }
-    #menu.orange:hover {
+    #menu.mini-menu.orange:hover {
       background: rgba(255, 165, 0, 0.3); }
-  #menu li {
+  #menu.mini-menu li {
     display: inline-block;
     margin: 10px;
     color: #000;
@@ -49,33 +101,20 @@ hello {
     border-radius: 10px;
     transition: .5s ease-in-out;
     opacity: 0; }
-    #menu li.active {
+    #menu.mini-menu li.active {
       background: #666;
       background: rgba(0, 0, 0, 0.5);
-      color: #fff; }
-      #menu li.active a {
-        color: #fff; }
-        #menu li.active a:hover {
+      color: #FFF; }
+      #menu.mini-menu li.active a {
+        color: #FFF; }
+        #menu.mini-menu li.active a:hover {
           color: #000; }
-    #menu li:hover {
+    #menu.mini-menu li:hover {
       background: rgba(255, 255, 255, 0.8); }
-    #menu li a {
+    #menu.mini-menu li a {
       text-decoration: none;
-      color: #000;
+      color: #FFF;
       padding: 9px 18px;
       display: block; }
-
-@media (max-width: 610px) {
-  #menu:hover {
-    height: 120px; } }
-@media (max-width: 331px) {
-  #menu:hover {
-    height: 180px; } }
-@media (max-width: 256px) {
-  #menu:hover {
-    height: 240px; } }
-@media (max-width: 209px) {
-  #menu:hover {
-    height: 320px; } }
 
 /*# sourceMappingURL=indexnew.css.map */
