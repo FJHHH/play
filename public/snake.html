@@ -268,12 +268,12 @@
     //死亡判断
     function isDie() {
         var dieFlag = false;
-        if (snakes[snakecount - 1].x == -20 || snakes[snakecount - 1].x == BLOCK_SIZE * COLS
-            || snakes[snakecount - 1].y == -20 || snakes[snakecount - 1].y == BLOCK_SIZE * ROWS) {
+        if (snakes[snakecount - 1].x === -20 || snakes[snakecount - 1].x === BLOCK_SIZE * COLS
+            || snakes[snakecount - 1].y === -20 || snakes[snakecount - 1].y === BLOCK_SIZE * ROWS) {
             dieFlag = true;
         }
         for (var i = 0; i < snakecount - 1; i++) {
-            if (snakes[snakecount - 1].x == snakes[i].x && snakes[snakecount - 1].y == snakes[i].y) {
+            if (snakes[snakecount - 1].x === snakes[i].x && snakes[snakecount - 1].y === snakes[i].y) {
                 dieFlag = true;
             }
         }

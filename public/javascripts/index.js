@@ -36,7 +36,7 @@ var playedTime;
 var currentFileNum = 0;
 var filelist = [];
 
-var localMusic = 0;//是否使用服务器上的资源
+var localMusic = 1;//是否使用服务器上的资源
 
 var volTemp;
 

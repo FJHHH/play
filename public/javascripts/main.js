@@ -1,10 +1,5 @@
 $(document).ready(function () {
-    $('#loading').fadeOut('400', function() {
-        $("#loadingcss").remove();
-        $('#loading').remove();
-    });
     $('#fullpage').fullpage({
-        sectionsColor: ['red', 'green', 'orange', '#1fa67a', '#ccddff'],
         anchors: ['home', 'music', 'mailbox', 'dailyTask', 'zp'],
         menu: '#menu',
         scrollingSpeed: 1000,
@@ -30,7 +25,24 @@ $(document).ready(function () {
                 if (navbgcolorst[nextIndex]) {
                     $menu.addClass(navbgcolorst[nextIndex]);
                 }
+
+                if (nextIndex == 0) {
+                    $menu.removeClass('mini-menu').addClass('home-menu');
+                    $('#menu-warpper').append($('#menu').detach());
+                } else {
+                    $menu.addClass('mini-menu').removeClass('home-menu');
+                    $('body').append($('#menu').detach());
+                }
             }
         }()
     });
+
+    $('#menu-warpper').append($('#menu').detach());
+
+    setTimeout(function () {
+        $('#loading').fadeOut('400', function() {
+            $("#loadingcss").remove();
+            $('#loading').remove();
+        });
+    }, 500);
 });
